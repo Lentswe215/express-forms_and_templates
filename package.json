@@ -1,0 +1,16 @@
+{
+  "name": "node_and_express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node_and_express.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.18.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
