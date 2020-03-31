@@ -10,10 +10,16 @@ const client = new Client({
     "port": 5432,
     "database": "musicplaylist"
 });
+
 app.get("/mymusic", (req, res) =>{
-res.send("Hey there your music playlist is dope")
+res.send(s1.deleteAllSong())
 })
-// app.listen(8080, () => console.log("web server listening.. on port 8080"))
+
+var server = app.listen(3000, () =>{ 
+    let host = server.address().address
+    let port = server.address().port
+    console.log(`web server listening.. on http://${host}:${port}`)})
+
 
 class Song
 {
@@ -78,7 +84,18 @@ async deleteSong(songid){
         console.log(`Song not deleted : ${e}`) 
     }
 }
+
+async deleteAllSong(){
+    await this.connect()
+
+    try {
+        await client.query(`DELETE from mymusic`)
+        console.log(`Song deleted`)
+    } catch (e) {
+        console.log(`Song not deleted : ${e}`) 
+    }
 }
-// let s1 = new Song("Don't judge me", "Ty Dolla $ign", "Future", "Beach House 3", "2017")
+}
+let s1 = new Song("Don't judge me", "Ty Dolla $ign", "Future", "Beach House 3", "2017")
 
 // s1.viewPlaylist()

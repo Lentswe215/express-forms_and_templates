@@ -1,7 +1,6 @@
 {
   "name": "node_and_express",
   "version": "1.0.0",
-  "description": "",
   "main": "node_and_express.js",
   "dependencies": {
     "express": "^4.17.1",
@@ -9,8 +8,18 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lentswe215/node_and_express.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lentswe215/node_and_express/issues"
+  },
+  "homepage": "https://github.com/Lentswe215/node_and_express#readme",
+  "description": ""
 }
