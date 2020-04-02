@@ -1,26 +1,55 @@
-const express = require('express')
-const app = express()
-let bodyParser = require("body-parser")
-
-let urlencoderParser = bodyParser.urlencoded({extended: false})
-
-app.use(express.static('public'))
-
-app.get('/examples.html', (req, res) => {
-    res.sendFile( __dirname + " " + "examples.html")
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+// const pug = require("pug")
+const {Pool} = require('pg')
+const pool = new Pool({
+    user: "user",
+    password: "pass",
+    host: "localhost",
+    port: 5432,
+    database: "visitordb"
 })
 
-app.post('/process_post', urlencoderParser, (req, res) => {
-    response = {
-        first_name:req.body.first_name,
-        last_name:req.body.last_name
-    }
-    console.log(response)
-    res.end(JSON.stringify(response))
-})
-let server = app.listen(8081, () => {
-    let host = server.address().address
-    let port = server.address().port
+let { Visitors } = require("./visitor");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.set("view engine", "pug");
+app.use(express.static("public"));
+app.get("/new_visit", (req, res) => {
+  res.sendFile(__dirname + "/" + "public/new_visit.html");
+});
 
-    console.log("Listening at http://%s:%s", host, port)
+app.post("/add_visitor", async (req, res) => {
+  let visitor1 = new Visitors(
+    req.body.visitor_name,
+    req.body.visitor_age,
+    req.body.date_of_visit,
+    req.body.time_of_visit,
+    req.body.your_name,
+    req.body.comments
+  );
+  visitor1.addNewVisitor();
+
+  let visitorInfo = {
+    Visitor_Name:req.body.visitor_name,
+    visitor_age:req.body.visitor_age,
+    date_of_visit:req.body.date_of_visit,
+    time_of_visit:req.body.time_of_visit,
+    your_name:req.body.your_name,
+    comments:req.body.comments
+  }
+  
+  res.render('index', {
+    title:"Thank you",
+    header:"Thanks for the display the information that was saved to the database:",
+    message: visitorInfo
+  })
+              
+});
+
+let server = app.listen(3000, () => {
+  let port = server.address().port;
+
+  console.log("Listening at " + port);
 })
