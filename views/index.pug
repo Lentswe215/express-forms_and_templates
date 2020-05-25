@@ -3,4 +3,10 @@ html
         title #{title}
     body
         h1 #{header} 
-        p #{message}
+        .output= "Visitor's ID: " + data.visitorid
+        .output= "Fullname: " + data.fullname
+        .output= "Visitor's age: " + data.visitorsage
+        .output= "Date of visit: " + data.dateofvisit
+        .output= "Time of visit: " + data.timeofvisit
+        .output= "Assisted by: " + data.assistedby
+        .output= "Comments: " + data.comments

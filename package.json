@@ -1,12 +1,11 @@
 {
-  "name": "node_and_express",
+  "name": "express-forms_and_templates",
   "version": "1.0.0",
+  "description": "",
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "nodemod": "^2.6.1",
-    "nodemon": "^2.0.2",
     "pg": "^7.18.2",
     "pug": "^2.0.4"
   },
@@ -15,15 +14,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lentswe215/node_and_express.git"
+    "url": "git+https://github.com/Lentswe215/express-forms_and_templates.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Lentswe215/node_and_express/issues"
+    "url": "https://github.com/Lentswe215/express-forms_and_templates/issues"
   },
-  "homepage": "https://github.com/Lentswe215/node_and_express#readme",
-  "description": ""
+  "homepage": "https://github.com/Lentswe215/express-forms_and_templates#readme"
 }
